@@ -10,7 +10,7 @@ from pandas_profiling import ProfileReport
 from streamlit_pandas_profiling import st_profile_report
 
 #import model 
-svm = pickle.load(open('SVC.pkl','rb'))
+rf_classifier = pickle.load(open('SVC.pkl','rb'))
 
 #load dataset
 data = pd.read_csv('Cirhossis Dataset.csv')
@@ -27,7 +27,7 @@ html_layout1 = """
 <br>
 """
 st.markdown(html_layout1,unsafe_allow_html=True)
-activities = ['SVM','Model Lain']
+activities = ['Random Forest Classification','Model Lain']
 option = st.sidebar.selectbox('Pilihan mu ?',activities)
 st.sidebar.header('Data Pasien')
 
@@ -45,7 +45,7 @@ if st.checkbox("Tentang Dataset"):
 sns.set_style('darkgrid')
 
 if st.checkbox('EDa'):
-    pr =ProfileReport(data,explorative=True)
+    # pr =ProfileReport(data,explorative=True)
     st.header('**Input Dataframe**')
     st.write(data)
     st.write('---')
@@ -108,8 +108,8 @@ user_data = user_report()
 st.subheader('Data Pasien')
 st.write(user_data)
 
-user_result = svm.predict(user_data)
-svc_score = accuracy_score(y_test,svm.predict(X_test))
+user_result = rf_classifier.predict(user_data)
+svc_score = accuracy_score(y_test,rf_classifier.predict(X_test))
 
 #output
 st.subheader('Hasilnya adalah : ')
