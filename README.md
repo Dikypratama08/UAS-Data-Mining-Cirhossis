@@ -31,6 +31,4 @@ Classifier webapp dibangun dengan menggunakan Streamlit (Python-framework). Tuju
 
 
 ## Koreksi 
-* Error (index)
-Di file app.py hapus baris #18 
-* streamlit error sudah diupayakan diperbaiki sampai laptop ngeblank
+* Error (index) di baris ke 48
